@@ -9,7 +9,6 @@
   switch typeof(id)
     when 'string' then user = h.findUser(id)
     when 'object' then user = id
-  console.log id, !!user.profile?.admin
   return !!user.profile?.admin
 
 @h.getNick = (user) ->
