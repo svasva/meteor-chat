@@ -1,0 +1,104 @@
+<template name="chat">
+  <div class="bubble" id="chat">
+    <div class="header">
+      {{#if private}}
+        <i class="icon-user"></i>
+        {{roomName}}
+        <span class="muted">
+          {{#if isOnline roomId}}
+            online
+          {{else}}
+            offline
+          {{/if}}
+        </span>
+        <a href="#" class="pull-right" id="closeRoom">&times;</a>
+      {{else}}
+        Chat room
+      {{/if}}
+    </div>
+    <div class="content">
+      <div class="messages row-fluid" id="messageList">
+        {{#each messages}}
+        <div class="message thumbnail">
+          <div class="muted pull-right">
+            <span rel="timeago" title="{{isoDate time}}"></span>
+          </div>
+          <div class="nickname">{{name}}</div>
+          {{body}}
+          {{#if admin}}
+            <a href="#" class="deleteMessage pull-right">
+              <i class="icon-trash"></i>
+            </a>
+          {{/if}}
+        </div>
+        {{else}}
+        <div class="muted">No messages yet</div>
+        {{/each}}
+      </div>
+
+      <div class="chatInput row-fluid">
+        {{#if currentUser}}
+          <div class="span10">
+            <input type="text" id="message" class="span10" placeholder="Type your message here...">
+          </div>
+          <div class="span2">
+            <button class="btn btn-primary" id="sendMessage">Send</button>
+          </div>
+        {{else}}
+          <div class="well well-small nomargin">
+            <a href="#" id="loginPlease">Log in or sign up</a> to post a message
+          </div>
+        {{/if}}
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<template name="tabbedchat">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#chatRoom" data-toggle="tab">Chat room</a></li>
+    <li><a href="#privateRoom" data-toggle="tab">Private room</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tab-pane active" id="chatRoom">
+      <div class="messages row-fluid" id="messageList">
+        {{#each messages}}
+        <div class="message thumbnail">
+          <div class="muted pull-right">
+            <span rel="timeago" title="{{isoDate time}}"></span>
+          </div>
+          <div class="nickname">{{name}}</div>
+          {{body}}
+          {{#if admin}}
+            <a href="#" class="deleteMessage pull-right">
+              <i class="icon-trash"></i>
+            </a>
+          {{/if}}
+        </div>
+        {{else}}
+        <div class="muted">No messages yet</div>
+        {{/each}}
+      </div>
+
+      <div class="chatInput row-fluid">
+        {{#if currentUser}}
+          <div class="span10">
+            <input type="text" id="message" class="span10" placeholder="Type your message here...">
+          </div>
+          <div class="span2">
+            <button class="btn btn-primary" id="sendMessage">Send</button>
+          </div>
+        {{else}}
+          <a href="#" id="loginPlease">Log in</a> to post a message
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="tab-pane" id="privateRoom">test</div>
+
+  </div>
+
+</template>

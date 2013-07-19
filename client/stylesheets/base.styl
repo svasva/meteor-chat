@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'), url(https://themes.googleusercontent.com/static/fonts/notosans/v1/iLJc6PpCnnbQjYc1Jq4v0z8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/notosans/v1/PIbvSEyHEdL91QLOQRnZ14raN7vELC11_xip9Rz-hMs.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Noto Sans Italic'), local('NotoSans-Italic'), url(https://themes.googleusercontent.com/static/fonts/notosans/v1/ByLA_FLEa-16SpQuTcQn4GOb2gHztoQeulij-1lvl-8.woff) format('woff');
+}
+
+#onlineUsers {
+  .header .badge { line-height: 1.8em; }
+  .content {
+    max-height: 438.39px;
+    overflow: scroll;
+    .openPrivate .badge { margin-top: -2px; }
+    .nav { margin: 0; }
+  }
+}
+
+.nomargin { margin: 0 !important; }
+
+#chat {
+  .content {
+    .messages {
+      height: 400px;
+      overflow: scroll;
+      margin-bottom: 0.6em;
+    }
+
+    .message {
+      padding: 0.6em;
+      margin-bottom: 5px;
+      .nickname {
+        font-weight: bold;
+        padding-right: 1em;
+      }
+    }
+
+    .chatInput {
+      width: 100%;
+      input[type='text'] {
+        width: 100%;
+        margin: 0;
+      }
+      button { width: 100%; }
+    }
+  }
+}
+
+.bubble {
+  display: block;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+
+  padding: 0;
+  margin-bottom: 20px;
+  .alert {margin: 0; margin-top: 0.3em;}
+  .header {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0.2em 0.5em;
+    line-height: 1.5em;
+    border-bottom: 1px solid #bbb;
+    background: #eee;
+  }
+  .content {
+    padding: 0.6em;
+  }
+}
+
+.border-box {
+  -box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+}
+input[type='text'] {
+  @extend .border-box;
+  height: 30px;
+}
+
+.monospace {
+  font-family: "Lucida Console", Monaco, "Courier New", Courier, monospace;
+}
+
+html, body, input, textarea, select {
+  font-family: 'Noto Sans', 'Georgia', serif;
+}
+
+body {
+  padding-top: 20px;
+}

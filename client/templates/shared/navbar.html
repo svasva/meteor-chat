@@ -1,0 +1,34 @@
+<template name="navbar">
+  <div class="navbar">
+    <div class="navbar-inner">
+
+      <div class="container">
+
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+        <a href="{{homeUrl}}" class="brand">Chat</a>
+
+        <div class="nav-collapse">
+
+          <!-- <ul class="nav">
+            {{#if currentUser}}
+              <li class="{{activeLink 'chat' ''}}">
+                <a href="{{chatUrl}}">Chat room</a>
+              </li>
+            {{/if}}
+          </ul>
+ -->
+          <ul class="nav pull-right">
+            <li>{{loginButtons}}</li>
+          </ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+
+    </div>
+  </div>
+</template>

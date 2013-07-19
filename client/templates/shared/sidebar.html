@@ -1,0 +1,52 @@
+<template name="sidebar">
+  <div class="bubble" id="onlineUsers">
+    <div class="header">
+      Online users
+      <div class="badge pull-right">{{users.count}}</div>
+    </div>
+    <div class="content">
+      <ul class="nav nav-pills nav-stacked">
+      {{#each users}}
+        {{#if currentUser}}
+          {{#if sameId currentUser this}}
+            <li class="disabled">
+              <a href="#">
+                <i class="icon-user"></i>
+                {{name}}
+              </a>
+            </li>
+          {{else}}
+            <li class="{{userClass this}}">
+              <a href="#" class="openPrivate">
+                <i class="icon-user"></i>
+                {{name}}
+                {{#if msgCounter _id}}
+                  <span class="badge badge-info pull-right">
+                    {{msgCounter _id}}
+                  </span>
+                {{/if}}
+              </a>
+            </li>
+  <!--           <li class="dropdown {{userClass this}}">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                {{name}}
+                <b class="caret pull-right"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="openPrivate">Private message</a></li>
+              </ul>
+            </li> -->
+          {{/if}}
+        {{else}}
+          <li class="disabled">
+            <a href="#">
+              <i class="icon-user"></i>
+              {{name}}
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
