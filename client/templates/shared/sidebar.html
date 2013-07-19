@@ -20,6 +20,11 @@
               <a href="#" class="openPrivate">
                 <i class="icon-user"></i>
                 {{name}}
+                {{#if activeRoom _id}}
+                  <span class="badge badge-important pull-right">
+                    &times;
+                  </span>
+                {{/if}}
                 {{#if msgCounter _id}}
                   <span class="badge badge-info pull-right">
                     {{msgCounter _id}}

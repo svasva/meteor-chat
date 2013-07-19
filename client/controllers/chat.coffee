@@ -48,8 +48,12 @@ Template.chat.helpers
   roomId: -> Session.get 'roomId'
   messages: ->
     roomId = Session.get('roomId')
+    userId = Meteor.userId()
     if roomId
       selector =
-          $or: [{roomId: roomId}, {roomId: Meteor.userId()}]
+        $or: [
+          {userId: userId, roomId: roomId}
+          {userId: roomId, roomId: Meteor.userId()}
+        ]
     else selector = {roomId: null}
     Messages.find(selector, {sort: {time: 1}})
