@@ -51,7 +51,7 @@
 @h.sendMessage = ->
   text = $('#message').val()
   throw new Meteor.Error('500', 'Empty message') unless text
-  if nick = text.match(/\/nick (.*)/)?[1]
+  if nick = text.match(/^\/nick (.*)/)?[1]
     Meteor.call('changeNickname', nick)
   else
     Meteor.call('sendMessage', text, Session.get('roomId'))
