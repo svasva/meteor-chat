@@ -11,7 +11,7 @@ Template.sidebar.helpers
 Template.sidebar.events
   'click .openPrivate': (e) ->
     return false unless Meteor.user()
-    if Session.equals('roomId', @_id)
+    if Session.get('roomId')
       Session.set('roomId', undefined)
       Session.set('roomName', undefined)
       h.resetMsgCounter('room')

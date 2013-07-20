@@ -82,6 +82,7 @@ Template.chat.events
     h.prevent(e)
     Session.set('roomId', undefined)
     Session.set('roomName', undefined)
+    h.resetMsgCounter('room')
   'keydown #message': (e) ->
     if e.keyCode is 9 #tab
       h.prevent(e)
