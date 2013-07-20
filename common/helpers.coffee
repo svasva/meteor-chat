@@ -12,6 +12,7 @@
   return !!user.profile?.admin
 
 @h.getNick = (user) ->
+  return '' unless user
   nickname = user.profile?.nickname
   nickname ||= user.emails[0].address.replace(/@.*/, '')
 
