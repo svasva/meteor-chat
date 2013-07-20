@@ -64,6 +64,7 @@ Template.chat.rendered = ->
     @_rendered = true
     $(window).focus ->
       h.resetMsgCounter(Session.get('roomId') || 'room')
+    window._focus = true
 
 Template.chat.events
   'click #sendMessage': (e) ->

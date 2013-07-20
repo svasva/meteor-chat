@@ -26,12 +26,12 @@
             <span rel="timeago" title="{{isoDate time}}"></span>
           </div>
           <div class="nickname">{{name}}</div>
-          {{body}}
           {{#if admin}}
             <a href="#" class="deleteMessage pull-right">
               <i class="icon-trash"></i>
             </a>
           {{/if}}
+          {{parseLinks body}}
         </div>
         {{else}}
         <div class="muted">No messages yet</div>
