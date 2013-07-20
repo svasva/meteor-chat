@@ -50,12 +50,10 @@
 
       <div class="chatInput row-fluid">
         {{#if currentUser}}
-          <div class="span10">
+          <span class="input">
             <input type="text" id="message" class="span10" placeholder="Type your message here...">
-          </div>
-          <div class="span2">
-            <button class="btn btn-primary" id="sendMessage">Send</button>
-          </div>
+          </span>
+          <button class="btn btn-primary" id="sendMessage">Send</button>
         {{else}}
           <div class="well well-small nomargin">
             <a href="#" id="loginPlease">Log in or sign up</a> to post a message

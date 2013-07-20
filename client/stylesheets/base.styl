@@ -69,13 +69,21 @@
       position: absolute;
       height: 30px;
       left: 10px;
-      padding-right: 21px;
       bottom: 10px;
+      span.input {
+        display: block;
+        padding-right: 110px;
+      }
       input[type='text'] {
         width: 100%;
         margin: 0;
       }
-      button { width: 100%; }
+      button {
+        position: absolute;
+        width: 80px;
+        top: 0px;
+        right: 20px;
+      }
     }
 
     .message {
@@ -158,7 +166,7 @@ html, body, input, textarea, select {
   font-family: 'Noto Sans', 'Georgia', serif;
 }
 
-html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+html, body { height: 100%; margin: 0; padding: 0; }
 
 .navbar {
   margin-left: 0;
@@ -169,14 +177,13 @@ html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
     @extend .border-box;
     height: 100%;
     padding-top: 20px;
-    box-sizing: border-box;
 }
 
 .columns {
     @extend .border-box;
     height: 100%;
     margin: 0;
-    padding-bottom: 10px;
+    padding-bottom: 11px;
 }
 
 .content { padding-top: 60px; }
