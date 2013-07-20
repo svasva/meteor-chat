@@ -12,11 +12,14 @@
             offline
           {{/if}}
         </span>
+        {{#if roomMsgCounter}}
+          <span class="badge pull-right">{{roomMsgCounter}}</span>
+        {{/if}}
         <a href="#" class="pull-right nodecor" id="closeRoom">
           &laquo; Back to the public room
         </a>
       {{else}}
-        Chat room
+        Public chat room
       {{/if}}
     </div>
     <div class="content">

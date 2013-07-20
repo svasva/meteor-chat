@@ -117,6 +117,7 @@ Template.chat.helpers
   private: -> not Session.equals('roomId', undefined)
   roomName: -> Session.get 'roomName'
   roomId: -> Session.get 'roomId'
+  roomMsgCounter: -> h.getMsgCounter('room')
   msgClass: ->
     if @system? then return 'system'
     if @userId is Meteor.userId() then return 'own'
