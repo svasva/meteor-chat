@@ -27,7 +27,9 @@
           <div class="muted pull-right">
             <span rel="timeago" title="{{isoDate time}}"></span>
           </div>
-          <div class="nickname">{{name}}</div>
+          <div class="nickname">
+            <a href="#" class="appendNickname">{{name}}</a>
+          </div>
           {{#if admin}}
             <a href="#" class="deleteMessage pull-right">
               <i class="icon-trash"></i>

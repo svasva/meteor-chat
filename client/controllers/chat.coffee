@@ -97,6 +97,11 @@ Template.chat.events
     h.prevent(e)
     $('#login-dropdown-list a[data-toggle=dropdown]').trigger('click')
     $('#login-email').focus()
+  'click .appendNickname': (e) ->
+    h.prevent(e)
+    val = $('#message').val()
+    $('#message').val(val + @name)
+    $('#message').focus()
 
 Template.chat.helpers
   pageTitle: ->
