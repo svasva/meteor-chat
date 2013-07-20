@@ -60,10 +60,10 @@
 Template.chat.rendered = ->
   $('span[rel=timeago]').timeago()
   h.autoScroll('#messageList')
+  $(window).focus ->
+    h.resetMsgCounter(Session.get('roomId') || 'room')
   unless @_rendered
     @_rendered = true
-    $(window).focus ->
-      h.resetMsgCounter(Session.get('roomId') || 'room')
     window._focus = true
 
 Template.chat.events
