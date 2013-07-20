@@ -1,4 +1,14 @@
 @h ||= {}
+
+Meteor._onLogin =  (userId) -> h._sendStatusMessage(userId, true)
+Meteor._onLogout = (userId) -> h._sendStatusMessage(userId, false)
+
+@h._sendStatusMessage = (userId, online) ->
+  user = Meteor.users.findOne(userId)
+  word = if online then 'entered' else 'left'
+  message = "#{h.getNick(user)} has #{word} the room."
+  h._sendMessage(userId, message, undefined, true)
+
 @h._sendMessage = (userId, text, roomId, system = null) ->
   user = h.findUser(userId)
   msg =
