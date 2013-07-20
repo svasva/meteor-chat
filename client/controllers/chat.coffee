@@ -107,6 +107,10 @@ Template.chat.helpers
   private: -> not Session.equals('roomId', undefined)
   roomName: -> Session.get 'roomName'
   roomId: -> Session.get 'roomId'
+  msgClass: ->
+    if @system? then return 'system'
+    if @userId is Meteor.userId() then return 'own'
+    if @body.match(h.getNick(Meteor.user())) then return 'highlight'
   messages: ->
     roomId = Session.get('roomId')
     userId = Meteor.userId()
