@@ -1,5 +1,5 @@
 Template.sidebar.helpers
-  users: -> OnlineUsers.find()
+  users: -> OnlineUsers.find({}, {sort: {name: 1}})
   msgCounter: (roomId) -> Session.get("msgCounter-#{roomId}")
   userClass: (user) ->
     return 'disabled' if h.sameId(Meteor.user(), user)
