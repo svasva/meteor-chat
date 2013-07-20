@@ -13,6 +13,7 @@ Template.sidebar.events
     if Session.equals('roomId', @_id)
       Session.set('roomId', undefined)
       Session.set('roomName', undefined)
+      h.resetMsgCounter('room')
     else
       h.prevent(e)
       Session.set('roomId', @_id)
