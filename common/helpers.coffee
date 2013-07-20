@@ -16,3 +16,14 @@
   nickname ||= user.emails[0].address.replace(/@.*/, '')
 
 @h.sameId = (obj1, obj2) -> obj1?._id == obj2?._id
+
+@h.getUserEmail = (user = null, force = false) ->
+  user ||= Meteor.user()
+  throw new Meteor.Error(500, 'Not authorized') if !user && force
+  email = user.emails?[0]?.address
+  throw new Meteor.Error(500, 'Bad account') if !email && force
+  return email
+
+@h.gravatarHash = (user = null) -> h.md5(h.getUserEmail(user))
+@h.gravatarUrl  = (user = null) ->
+  "http://www.gravatar.com/avatar/#{h.gravatarHash(user)}?s=50"

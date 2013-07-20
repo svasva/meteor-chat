@@ -49,6 +49,17 @@
     .message {
       padding: 0.6em;
       margin-bottom: 5px;
+      &.withPic {
+        padding-left: 60px;
+        position: relative;
+        img {
+          max-width: 47px;
+          max-height: 47px;
+          position: absolute;
+          top: 5px;
+          left: 5px;
+        }
+      }
       .nickname {
         font-weight: bold;
         padding-right: 1em;

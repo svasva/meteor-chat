@@ -23,10 +23,13 @@
       {{#isolate}}
       <div class="messages row-fluid" id="messageList">
         {{#each messages}}
-        <div class="message thumbnail {{msgClass}}">
+        <div class="message thumbnail {{msgClass}} {{#if picUrl}}withPic{{/if}}">
           <div class="muted pull-right">
             <span rel="timeago" title="{{isoDate time}}"></span>
           </div>
+          {{#if picUrl}}
+            <img class="pull-left img-rounded" src="{{picUrl}}"></img>
+          {{/if}}
           <div class="nickname">
             <a href="#" class="appendNickname">{{name}}</a>
           </div>

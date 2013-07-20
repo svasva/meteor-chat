@@ -18,6 +18,7 @@ Meteor._onLogout = (userId) -> h._sendStatusMessage(userId, false)
     time: new Date
     body: text
     system: system
+    picUrl: h.gravatarUrl(user)
 
   Messages.insert(msg)
 
