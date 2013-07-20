@@ -22,7 +22,7 @@
 
 Handlebars.registerHelper 'sameId', (obj1, obj2) -> h.sameId(obj1, obj2)
 Handlebars.registerHelper 'parseLinks', (text) ->
-  parsed = text.replace( /(http(s)?:\/\/[^\s]+)/gi , '<a href="$1">$1</a>' )
+  parsed = text.replace( /(http(s)?:\/\/[^\s]+)/gi , '<a target="_blank" href="$1">$1</a>' )
   new Handlebars.SafeString parsed
 
 Handlebars.registerHelper 'admin', ->
