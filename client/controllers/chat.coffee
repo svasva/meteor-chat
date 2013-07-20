@@ -32,6 +32,10 @@
   if key then Session.get "msgCounter-#{key}"
   else Session.get "msgCounter"
 
+@h.messageNotifier = (msg) ->
+  return unless h.checkNotifySupport() and h.checkNotifyPermission()
+  h.notify("New private message from #{msg.name}", msg.body)
+
 @h.msgObserver = ->
   return false unless Meteor.user()
   window.msgObs?.stop()
@@ -46,6 +50,7 @@
       return if init or Meteor.loggingIn()
       return if window._focus and Session.equals('roomId', key)
       h.incrementMsgCounter(key || 'room')
+      h.messageNotifier(msg) if key
   init = false
 
 @h.sendMessage = ->

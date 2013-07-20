@@ -54,4 +54,9 @@
       </ul>
     </div>
   </div>
+  {{#if needNotifyPermission}}
+    <a href="javascript:h.requestPermission()" class="pull-right">
+      Enable new message notifications
+    </a>
+  {{/if}}
 </template>

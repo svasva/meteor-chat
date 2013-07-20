@@ -6,6 +6,7 @@ Template.sidebar.helpers
     return 'active' if Session.equals('roomId', user._id)
   roomId: -> Session.get 'roomId'
   activeRoom: (roomId) -> Session.equals('roomId', roomId)
+  needNotifyPermission: -> h.needNotifyPermission()
 
 Template.sidebar.events
   'click .openPrivate': (e) ->
