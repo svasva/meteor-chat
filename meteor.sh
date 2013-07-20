@@ -4,7 +4,8 @@
 export APP_HOST=192.81.209.152
 export APP_DOMAIN=chat.epools.org
 export APP_PORT=3000
-export DISABLE_WEBSOCKETS=true
+#export DISABLE_WEBSOCKETS=true
+export DDP_URL=http://ws.chat.epools.org
 
 # Uncomment this if your host is an EC2 instance
 # export EC2_PEM_FILE=path/to/your/file.pem
@@ -47,13 +48,13 @@ echo Deploying...
 $METEOR_CMD bundle bundle.tgz > /dev/null 2>&1 &&
 scp $SSH_OPT bundle.tgz $SSH_HOST:/tmp/ > /dev/null 2>&1 &&
 rm bundle.tgz > /dev/null 2>&1 &&
-ssh $SSH_OPT $SSH_HOST MONGO_URL=$MONGO_URL DISABLE_WEBSOCKETS=$DISABLE_WEBSOCKETS ROOT_URL=$ROOT_URL APP_DIR=$APP_DIR PORT=$APP_PORT 'sudo -E bash -s' > /dev/null 2>&1 <<'ENDSSH'
+ssh $SSH_OPT $SSH_HOST MONGO_URL=$MONGO_URL DDP_DEFAULT_CONNECTION_URL=$DDP_URL ROOT_URL=$ROOT_URL APP_DIR=$APP_DIR PORT=$APP_PORT 'sudo -E bash -s' > /dev/null 2>&1 <<'ENDSSH'
 if [ ! -d "$APP_DIR" ]; then
 mkdir -p $APP_DIR
 chown -R www-data:www-data $APP_DIR
 fi
 pushd $APP_DIR
-forever stop bundle/main.js
+forever stop $APP_DIR/bundle/main.js
 rm -rf bundle
 tar xfz /tmp/bundle.tgz -C $APP_DIR
 rm /tmp/bundle.tgz
@@ -73,7 +74,7 @@ patch -u bundle/server/server.js <<'ENDPATCH'
  
    }).run();
 ENDPATCH
-forever start bundle/main.js
+forever start $APP_DIR/bundle/main.js
 popd
 ENDSSH
 echo Your app is deployed and serving on: $ROOT_URL
