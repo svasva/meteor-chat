@@ -3,17 +3,16 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-
+  <div class="container wrapper">
     {{> navbar}}
 
-    <div class="row-fluid">
+    <div class="row columns content">
 
-      <div class="span9">
+      <div class="span9 columns">
         {{#isolate}} {{renderPage}} {{/isolate}}
       </div>
 
-      <div class="span3">
+      <div class="span3" id="sidebar">
         {{#isolate}} {{> sidebar }} {{/isolate}}
       </div>
 

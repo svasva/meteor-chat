@@ -17,6 +17,12 @@
   src: local('Noto Sans Italic'), local('NotoSans-Italic'), url(https://themes.googleusercontent.com/static/fonts/notosans/v1/ByLA_FLEa-16SpQuTcQn4GOb2gHztoQeulij-1lvl-8.woff) format('woff');
 }
 
+.border-box {
+  -box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
 #onlineUsers {
   .content {
     max-height: 438.39px;
@@ -37,18 +43,45 @@
 }
 
 #chat {
-  .header .badge { margin-left: 0.6em; }
+  // @extend .border-box;
+  height: 100%;
+  overflow: hidden;
+  .header {
+    z-index: 2;
+    .badge { margin-left: 0.6em; }
+  }
   .content {
+    max-height: 100%;
+    height: 100%;
     .messages {
-      height: 400px;
+      .message:last-child { margin-bottom: 0; }
+      @extend .border-box;
+      position: absolute;
+      bottom: 50px;
+      top: 40px;
+      right: 0px;
+      padding-left: 10px;
       overflow: auto;
-      margin-bottom: 0.6em;
-      padding-right: 0.6em;
+    }
+
+    .chatInput {
+      @extend .border-box;
+      position: absolute;
+      height: 30px;
+      left: 10px;
+      padding-right: 21px;
+      bottom: 10px;
+      input[type='text'] {
+        width: 100%;
+        margin: 0;
+      }
+      button { width: 100%; }
     }
 
     .message {
       padding: 0.6em;
       margin-bottom: 5px;
+      margin-right: 10px;
       &.withPic {
         padding-left: 60px;
         position: relative;
@@ -73,18 +106,11 @@
       &.highlight { background-color: #d9edf7; }
     }
 
-    .chatInput {
-      width: 100%;
-      input[type='text'] {
-        width: 100%;
-        margin: 0;
-      }
-      button { width: 100%; }
-    }
   }
 }
 
 .bubble {
+  position: relative;
   display: block;
   padding: 4px;
   line-height: 20px;
@@ -100,25 +126,25 @@
   margin-bottom: 20px;
   .alert {margin: 0; margin-top: 0.3em;}
   .header {
+    @extend .border-box;
+    position: absolute;
+    width: 100%;
     font-size: 1.2em;
     margin: 0;
     padding: 0.2em 0.5em;
     line-height: 1.5em;
+    height: 1.9em;
     border-bottom: 1px solid #bbb;
     background: #eee;
     .badge { line-height: 1.8em; }
   }
   .content {
+    @extend .border-box;
     padding: 0.6em;
+    padding-top: 2.5em;
   }
 }
 
-.border-box {
-  -box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-
-}
 input[type='text'] {
   @extend .border-box;
   height: 30px;
@@ -132,6 +158,25 @@ html, body, input, textarea, select {
   font-family: 'Noto Sans', 'Georgia', serif;
 }
 
-body {
-  padding-top: 20px;
+html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+
+.navbar {
+  margin-left: 0;
+  position: absolute;
 }
+
+.container {
+    @extend .border-box;
+    height: 100%;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.columns {
+    @extend .border-box;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.content { padding-top: 60px; }
